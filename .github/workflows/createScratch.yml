@@ -1,15 +1,16 @@
 name: SFDX Create Scratch Org
 
 on: 
-  push:
-    branches: 
-      - master
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Nome da Scratch'     
-        required: true
-        default: 'my-scratch'
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: 'Nome da Scratch'     
+          required: true
+          default: 'my-scratch'
+          run: 'echo ${{ github.event.inputs.environment }}'
+    push:
+      branches: 
+        - master
 
 jobs:
   build:
