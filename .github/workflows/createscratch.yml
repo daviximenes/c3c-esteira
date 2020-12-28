@@ -11,10 +11,6 @@ jobs:
     
     steps:  
         - uses: actions/checkout@v1
-        - name: Install Dependencies
-          run: npm install sfdx-cli
-          
-  
-            
+
         - name: Create Scratch Org
-          run: node_modules/sfdx-cli/bin/run force:org:create --targetusername dantas.victor94@gmail.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --durationdays 1
+          run: sfdx force:org:create -s -f config/project-scratch-def.json
