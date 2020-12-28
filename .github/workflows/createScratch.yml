@@ -9,9 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2  
-      - name: 'Nome'  
-        run: 'echo ${{ github.event.inputs.environment }}'            
+      - uses: actions/checkout@v2          
       - name: Write the token into a file
         run: 'echo ${{ secrets.AUTH_SECRET}} > token.txt'
       - name: Install Salesforce CLI
