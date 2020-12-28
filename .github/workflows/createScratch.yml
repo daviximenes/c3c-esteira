@@ -1,6 +1,15 @@
 name: SFDX Create Scratch Org
 
-on: [push]
+on: 
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Nome da Scratch'     
+        required: true
+        default: 'my-scratch'
 
 jobs:
   build:
@@ -20,12 +29,12 @@ jobs:
       - name: Auth with the DevHub
         run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d'
       - name: Create scratch org
-        run: 'sfdx force:org:create -f config/project-scratch-def.json -a my-scratch'
+        run: 'sfdx force:org:create -f config/project-scratch-def.json -a  ${{ github.event.inputs.environment }} '
       - name: Push source
-        run: 'sfdx force:source:push -u my-scratch'
+        run: 'sfdx force:source:push -u ${{ github.event.inputs.environment }}'
       - name: List orgs
         run: 'sfdx force:org:list'
       - name: Open org
-        run : 'sfdx force:org:open -u my-scratch'
+        run : 'sfdx force:org:open -u ${{ github.event.inputs.environment }}'
 
 
