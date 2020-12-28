@@ -15,4 +15,4 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
         
       - name: 'Create Scratch'
-        run: sfdx force:org:create -f config/project-scratch-def.json -a teste -u dantas.victor94@gmail.com  -s --durationdays 1
+        run: sfdx force:org:create -f config/project-scratch-def.json -a teste -v dantas.victor94@gmail.com  -s --durationdays 1
