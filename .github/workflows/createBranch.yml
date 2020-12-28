@@ -1,4 +1,4 @@
-name: SFDX Create Scratch Org
+name: Create Branch
 
 on: [push]
 
