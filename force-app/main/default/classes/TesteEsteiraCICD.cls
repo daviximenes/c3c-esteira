@@ -1,4 +1,5 @@
 public class TesteEsteiraCICD {
     //essa classe é usada somente para testes de deploy
-    //teste AUTH_SECRET 2
+    //teste AUTH_SECRET 2sfdx force:limits:api:display -u <Dev Hub username or alias>
+
 }
