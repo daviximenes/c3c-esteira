@@ -25,4 +25,7 @@ jobs:
         run: 'sfdx force:source:push -u my-scratch'
       - name: List orgs
         run: 'sfdx force:org:list'
+      - name: Open org
+        run : 'sfdx force:org:open -u my-scratch'
+
 
