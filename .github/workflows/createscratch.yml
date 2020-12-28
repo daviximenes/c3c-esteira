@@ -14,7 +14,5 @@ jobs:
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
         
-      - name: 'Alias'
-        run: sfdx auth:web:login --setdefaultdevhubusername --setalias testeHub
       - name: 'Create Scratch'
-        run: sfdx force:org:create -f config/project-scratch-def.json -a testeScratch --setdefaultdevhubusername --setalias testeAlias --durationdays 30
+        run: sfdx force:org:create -f project-scratch-def.json -a teste --setdefaultusername --durationdays 1
