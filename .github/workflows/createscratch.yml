@@ -15,4 +15,4 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
         
       - name: 'Create Scratch'
-        run: sfdx force:org:create sourceOrg=00D5w000005mFeuEAE -v SFDX-ENV -f config/project-scratch-def.json -a teste2 -s --wait 10 --durationdays 1
+        run: sfdx force:org:create sourceOrg=00D5w000005mFeuEAE -v SFDX-ENV -x config/project-scratch-def.json -a teste2 -s --wait 10 --durationdays 1
