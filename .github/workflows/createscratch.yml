@@ -14,5 +14,7 @@ jobs:
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
         
+      - name: 'Dev Hub'
+        run: sfdx force:auth:web:login --setdefaultdevhubusername --setalias testehub
       - name: 'Create Scratch'
-        run: sfdx force:org:create -f config/project-scratch-def.json -a teste -v dantas.victor94@gmail.com  -s --durationdays 1
+        run: sfdx force:org:create -f config/project-scratch-def.json -a teste -v testehub -s --durationdays 1
