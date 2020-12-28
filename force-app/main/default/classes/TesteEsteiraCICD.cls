@@ -1,0 +1,3 @@
+public class TesteEsteiraCICD {
+    //essa classe é usada somente para testes de deploy
+}
