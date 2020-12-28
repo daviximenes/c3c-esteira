@@ -7,7 +7,6 @@ on:
           description: 'Nome da Scratch'     
           required: true
           default: 'my-scratch'
-          run: 'echo ${{ github.event.inputs.environment }}'
     push:
       branches: 
         - master
@@ -18,7 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2              
+      - uses: actions/checkout@v2  
+      - name: 'Nome'  
+        run: 'echo ${{ github.event.inputs.environment }}'            
       - name: Write the token into a file
         run: 'echo ${{ secrets.AUTH_SECRET}} > token.txt'
       - name: Install Salesforce CLI
