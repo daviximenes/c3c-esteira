@@ -1,16 +1,28 @@
 name: SFDX Create Scratch Org
 
-on: 
-  push:
-    branches: 
-      - master
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    
-    steps:  
-        - uses: actions/checkout@v1
 
-        - name: Create Scratch Org
-          run: sfdx force:org:create -s -f config/project-scratch-def.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2              
+      - name: Write the token into a file
+        run: 'echo ${{ secrets.AUTH_SECRET}} > token.txt'
+      - name: Install Salesforce CLI
+        run: |
+          wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+          mkdir sfdx-cli
+          tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+          ./sfdx-cli/install
+      - name: Auth with the DevHub
+        run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d'
+      - name: Create scratch org
+        run: 'sfdx force:org:create -f config/project-scratch-def.json -a my-scratch'
+      - name: Push source
+        run: 'sfdx force:source:push -u my-scratch'
+      - name: List orgs
+        run: 'sfdx force:org:list'
+
